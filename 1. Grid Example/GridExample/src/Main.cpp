@@ -104,7 +104,6 @@ struct Shader {
 	}
 
 	void Load(std::string vertexPath, std::string fragmentPath) {
-		_uniformsLocations.clear();
 		std::string vertexSource = Util::ReadTextFromFile("res/shaders/" + vertexPath);
 		std::string fragmentSource = Util::ReadTextFromFile("res/shaders/" + fragmentPath);
 		const char* vShaderCode = vertexSource.c_str();
@@ -122,6 +121,7 @@ struct Shader {
 		glAttachShader(tempID, fragment);
 		glLinkProgram(tempID);
 		if (CheckErrors(tempID, "PROGRAM")) {
+			_uniformsLocations.clear();
 			_ID = tempID;
 		}
 		glDeleteShader(vertex);
@@ -271,7 +271,6 @@ namespace Renderer {
 
 	void RenderFrame() {
 
-		glClearColor(0.05f, 0.05f, 0.05f, 0.0f);
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

@@ -306,7 +306,7 @@ namespace Renderer {
 		}
 
 		// Shader hotloading
-		if (Input::KeyDown(GLFW_KEY_H)) {
+		if (Input::KeyPressed(GLFW_KEY_H)) {
 			_solidColorshader.Load("solidcolor.vert", "solidcolor.frag");
 		}
 	}

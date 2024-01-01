@@ -104,6 +104,7 @@ struct Shader {
 	}
 
 	void Load(std::string vertexPath, std::string fragmentPath) {
+		_uniformsLocations.clear();
 		std::string vertexSource = Util::ReadTextFromFile("res/shaders/" + vertexPath);
 		std::string fragmentSource = Util::ReadTextFromFile("res/shaders/" + fragmentPath);
 		const char* vShaderCode = vertexSource.c_str();
@@ -303,12 +304,17 @@ namespace Renderer {
 			}
 			lightSquare = !lightSquare;
 		}
+
+		// Shader hotloading
+		if (Input::KeyDown(GLFW_KEY_H)) {
+			_solidColorshader.Load("solidcolor.vert", "solidcolor.frag");
+		}
 	}
 }
 
 void main() {
 
-	GL::Init(1920, 1080, "GridExample");
+	GL::Init(1920, 1080, "Grid Example");
 	Game::Init();
 	Renderer::Init();
 

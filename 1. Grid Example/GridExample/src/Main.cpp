@@ -24,7 +24,7 @@ namespace GL {
 
 	GLFWwindow* _window;
 
-    void Init(int width, int height, std::string title) {
+	void Init(int width, int height, std::string title) {
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -41,7 +41,7 @@ namespace GL {
 			std::cout << "Failed to initialize GLAD" << std::endl;
 			return;
 		}
-    }
+	}
 
 	GLFWwindow* GetWindowPointer() {
 		return _window;
